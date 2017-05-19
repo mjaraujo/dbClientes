@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <?php
 /*
   require_once './connect.php';
@@ -68,6 +68,9 @@
                     <tr> 
                         <th>#</th> 
                         <th>Nome</th> 
+                        <th>Responsável</th> 
+                        <th>Tipo Documento</th> 
+                        <th>Numero documento</th> 
                     </tr> 
                 </thead> 
                 <tbody id="result"> 

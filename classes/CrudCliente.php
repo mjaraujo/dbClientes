@@ -17,7 +17,7 @@ class CrudCliente extends Cliente{
     
     public function inserir(){
         
-        $sql = "INSERT INTO clientes (cli_fantasia, cli_responsavel, cli_doctipo, cli_docnumero, cli_timestamp) "
+        $sql = "INSERT INTO Clientes (cli_fantasia, cli_responsavel, cli_doctipo, cli_docnumero, cli_timestamp) "
                 . "VALUES(:fantasia, :responsavel, :doctipo, :docnumero, :timestamp)";
         $stmt =  DB::prepare($sql);
 
@@ -28,6 +28,16 @@ class CrudCliente extends Cliente{
         $stmt->bindValue(':timestamp', $this->timestamp , PDO::PARAM_STR);
         $retorno = $stmt->execute();
     }
-    //put your code here
+    
+    public function excluir(){
+        
+        $sql = "DELETE FROM Clientes c WHERE c.cli_id = :cli_id";
+        $stmt =  DB::prepare($sql);
+
+        $stmt->bindValue(':cli_id',  $this->id, PDO::PARAM_STR);
+        $retorno = $stmt->execute();
+    }
+    
+    
     
 }

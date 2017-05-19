@@ -9,35 +9,66 @@ function carregarDados() {
         }
     }
 
-    xmlhttp.open('GET', 'listarAlunos.php', true);
+    xmlhttp.open('GET', 'listarClientes.php', true);
     xmlhttp.send();
-
 }
 
 
+function apagarCliente(idCli) {
 
+    alert("o cliente " + idCli + "será apagado");
+
+    try {
+        var xmlhttp = new XMLHttpRequest();
+        var dados = "excluiCli=sim"
+                + "&id=" + document.getElementById().value
+                + "&responsavel=" + document.forms[0]["responsavel"].value
+                + "&tipoDoc=" + document.forms[0]["tipoDoc"].value
+                + "&numDoc=" + document.forms[0]["numDoc"].value;
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                alert(xmlhttp.responseText);
+            }
+        };
+
+        xmlhttp.open("POST", "./cadastros/CadastrarCliente.php", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send(dados);
+        var row = document.getElementById("linha" + idCli);
+        row.parentNode.removeChild(row);
+
+        //carregarDados();
+    } catch (err) {
+        alert(err);
+    }
+
+
+}
 /**
  * Função para o envio de dados
  * @returns {undefined}
  */
 function cadastrarCliente() {
-    var req = new XMLHttpRequest();
-    var dados = "nome=" + document.forms[0]["nome"].value
-    + "&responsavel=" + document.forms[0]["responsavel"].value
-    + "&tipoDoc=" + document.forms[0]["tipoDoc"].value
-    + "&numDoc=" + document.forms[0]["numDoc"].value;
+    try {
+        var xmlhttp = new XMLHttpRequest();
+        var dados = "cadCli=sim"
+                + "&nome=" + document.forms[0]["nome"].value
+                + "&responsavel=" + document.forms[0]["responsavel"].value
+                + "&tipoDoc=" + document.forms[0]["tipoDoc"].value
+                + "&numDoc=" + document.forms[0]["numDoc"].value;
 
-    req.onreadystatechange = function name() {
-        if (req.readyState == 4 && req.status == 200) {
-            document.forms[0][1].value = "";
-            carregarDados();
-       }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                alert(xmlhttp.responseText);
+            }
+        };
+
+        xmlhttp.open("POST", "./cadastros/CadastrarCliente.php", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send(dados);
+        //carregarDados();
+    } catch (err) {
+        alert(err);
     }
-    req.open("POST", "../cadastros/CadastrarCliente", true);
-    
-    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    req.send(dados);
-
-    carregarDados();
-
 }

@@ -12,7 +12,7 @@
  * @author ALUNO
  */
 
-
+debug_to_console( "Test" );
 echo('<pre>');
   var_dump($_POST);
   
@@ -31,3 +31,10 @@ if (isset($_POST['cadCli'])) {
 
 }
     
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
