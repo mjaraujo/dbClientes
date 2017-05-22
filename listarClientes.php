@@ -17,7 +17,7 @@ while ($r = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) {
         <td><?php echo $r[4] ?></td>
 
         <td><input type="button" onClick="apagarCliente(<?php echo $r[0] ?>)" > </td>
-        <td><a href="index.php?id=<?php echo $r[0] ?>" > Editar</a></td>
+        <td><input type="button" onClick="editarCliente(<?php echo $r[0] ?>)" > </td>
     </tr> 
 <?php } ?>
 

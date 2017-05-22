@@ -43,6 +43,17 @@
                 </select>
                 <label for="numDoc">Número do documento:</label>
                 <input type="text" name="numDoc" id="numdoc">
+                <label for="CEP">CEP</label>
+                <input type="checkbox" id="cepUnico" name="cepUnico" onblur="verificarCEP()"> Cep único
+                <input type="logradouro" name="logradouro" id="logradouro" disabled="true">
+                <label for="UF">UF:</label>
+                <select name="UF" id="tipoDoc">
+                    <option value="PR">PR</option>
+                    <option value="SP">SP</option>
+                    <option value="RS">RS</option>
+                    <option value="SC">SC</option>
+                </select>
+                    
                 <input type="hidden" value="cadCli" name="cadCli">
 
                 <button type="submit" >Salvar</button>
@@ -74,7 +85,7 @@
                     </tr> 
                 </thead> 
                 <tbody id="result"> 
-                    
+
                 </tbody> 
             </table>
         </div>

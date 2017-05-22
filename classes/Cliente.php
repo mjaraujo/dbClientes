@@ -10,14 +10,14 @@ class Cliente {
     protected $timestamp;
 
     function __construct($fantasia, $responsavel, $docTipo, $docNumero) {
-        
+
         $this->fantasia = $fantasia;
         $this->responsavel = $responsavel;
         $this->docTipo = $docTipo;
         $this->docNumero = $docNumero;
-        
     }
 
+    
     function getId() {
         return $this->id;
     }
