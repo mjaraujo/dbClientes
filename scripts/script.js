@@ -18,11 +18,11 @@ function verificarCEP() {
     var xmlhttp = new XMLHttpRequest();
     var dados = "acao=buscarCEP" +
             "&cep=" + document.getElementById("cep").value;
-    alert(dados);
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            alert(xmlhttp.responseText);
+            
             var ret = xmlhttp.responseText;
+            alert(ret);
             ret = ret.split(":");
             if (ret[0] == "1") {
                 document.getElementById('logradouro').placeholder = "Informe o logradouro";

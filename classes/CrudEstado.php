@@ -4,8 +4,8 @@ include_once '../bd/DB.php';
 
 class CrudEstado extends Estado{
     
-    function __construct($nome) {
-        parent::__construct($nome);
+    function __construct() {
+        parent::__construct();
     }
 
     
@@ -18,14 +18,16 @@ class CrudEstado extends Estado{
 
         $stmt->bindValue(':nomeUF', $nomeUF, PDO::PARAM_STR);
         
-        $est = new Estado();
+        $est = new CrudEstado();
         $stmt->setFetchMode( PDO::FETCH_INTO, $est);
         $stmt->execute();
-        $est = $stmt->fetch( PDO::FETCH_INTO );
+        $estFinded = $stmt->fetch( PDO::FETCH_INTO );
         $stmt->closeCursor();
         
-        var_dump($est);
-        echo $est->getTimestamp();
+        $est->id=$estFinded->est_id;
+        $est->nome=$estFinded->est_nome;
+        $est->timestamp=$estFinded->est_timestamp;
+  
         return $est;
         
     }

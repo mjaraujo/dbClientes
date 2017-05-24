@@ -32,33 +32,60 @@ if (isset($_POST['acao'])) {
 }
 
 function inserir() {
+    //Estado
     require_once ('../classes/CrudEstado.php');
-    
     $estNome = $_POST['est_estado'];
-    $est =new Estado();
-            
-    
+    $est = new CrudEstado();
     $est = CrudEstado::getByNome($estNome);
+
+    //Cidade
+    require_once ('../classes/CrudCidade.php');
     
-    echo $est->getNome();
+    $cidNome = $_POST['cid_nome'];
+    $cid = new CrudCidade();
+    $cid = CrudCidade::getByNomeEIdEstado($cidNome, $est->getId());
+   
+    
+    if ($cid->getCid_id() == NULL) {
+        $cid->setCid_nome($cidNome);
+        $cid->setEst_id($est->getId());
+        $cid->inserir();
+    }
+    
+    
+    //Endereco
+    require_once ('../classes/CrudEndereco.php');
+    
+    $cidNome = $_POST['cid_nome'];
+    $cid = new CrudEndereco();
+    $cid = CrudEndereco::getByCepELogradouro($endCEP, $endLogradouro);
+    if ($cid->getCid_id() == NULL) {
+        $cid->setCid_nome($cidNome);
+        $cid->setEst_id($est->getId());
+        $cid->inserir();
+    }
+    
+    
+    
+    
     
 
-    //echo 'achou o estado '. $est->getNome();
+
+
+
     /*
-    
-    $fantasia = $_POST['nome'];
-    $responsavel = $_POST['responsavel'];
-    $docTipo = $_POST['tipoDoc'];
-    $docNumero = $_POST['numDoc'];
-    
-    
-    $cli = new CrudCliente($fantasia, $responsavel, $docTipo, $docNumero);
 
-    $cli->inserir();
-     
+      $fantasia = $_POST['nome'];
+      $responsavel = $_POST['responsavel'];
+      $docTipo = $_POST['tipoDoc'];
+      $docNumero = $_POST['numDoc'];
+
+
+      $cli = new CrudCliente($fantasia, $responsavel, $docTipo, $docNumero);
+
+      $cli->inserir();
+
      */
-     
-     
 }
 
 function editar() {
