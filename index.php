@@ -30,7 +30,7 @@
             <legend>Cadastrar cliente</legend>
 
             <form id="form" name="cadCli" method="post" action="#" onsubmit="cadastrarCliente()">
-                <label for="nome">Nome</label>
+                <label for="nome" >Nome</label>
                 <input type="text" name="nome" id="nome">
                 <label for="responsavel">Responsável</label>
                 <input type="text" name="responsavel" id="responsavel">
@@ -43,19 +43,34 @@
                 </select>
                 <label for="numDoc">Número do documento:</label>
                 <input type="text" name="numDoc" id="numdoc">
+                <input type="checkbox" id="cepUnico" name="cepUnico"> Cep único
                 <label for="CEP">CEP</label>
-                <input type="checkbox" id="cepUnico" name="cepUnico" onblur="verificarCEP()"> Cep único
-                <input type="logradouro" name="logradouro" id="logradouro" disabled="true">
-                <label for="UF">UF:</label>
-                <select name="UF" id="tipoDoc">
+                <input type="text" name="cep" id="cep" onblur="verificarCEP()">
+                <label for="logradouro">Logradouro:</label>
+                <select name="tipoLogradouro" id="tipoLogradouro" disabled="true">
+                    <option value="rua">Rua</option>
+                    <option value="avenida">Avenida</option>
+                    <option value="alameda">Alameda</option>
+                    <option value="praca">Praça</option>
+                </select>
+                <input type="text" name="logradouro" id="logradouro" disabled="true">
+                <label for="uf">UF:</label>
+                <select name="uf" id="uf" disabled="true">
                     <option value="PR">PR</option>
                     <option value="SP">SP</option>
                     <option value="RS">RS</option>
                     <option value="SC">SC</option>
-                </select>
-                    
+                </select>                    
+                <label for="numero">Nº</label>
+                <input type="text" name="numero" id="numero" disabled="true">
+                <label for="complemento">Complemento</label>
+                <input type="text" name="complemento" id="complemento" disabled="true">
+                <label for="bairro">Bairro</label>
+                <input type="text" name="bairro" id="bairro" disabled="true">
+                <label for="cidade">Cidade</label>
+                <input type="text" name="cidade" id="cidade" disabled="true">
+                
                 <input type="hidden" value="cadCli" name="cadCli">
-
                 <button type="submit" >Salvar</button>
             </form>
             <span></span>

@@ -2,6 +2,5 @@
 
 define('HOST', '127.0.0.1');
 define('USER', 'root');
-define('PASS', 'suasenhaprofessor');
+define('PASS', 'Caratuma11');
 define('BASE', 'dbClientes');
-te

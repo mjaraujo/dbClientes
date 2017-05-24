@@ -12,6 +12,7 @@
  * @author ALUNO
  */
 require_once ('../classes/CrudCliente.php');
+
 if (isset($_POST['acao'])) {
     switch ($_POST['acao']) {
         case 'cadastrar':
@@ -31,19 +32,36 @@ if (isset($_POST['acao'])) {
 }
 
 function inserir() {
+    require_once ('../classes/CrudEstado.php');
+    
+    $estNome = $_POST['est_estado'];
+    $est =new Estado();
+            
+    
+    $est = CrudEstado::getByNome($estNome);
+    
+    echo $est->getNome();
+    
 
+    //echo 'achou o estado '. $est->getNome();
+    /*
+    
     $fantasia = $_POST['nome'];
     $responsavel = $_POST['responsavel'];
     $docTipo = $_POST['tipoDoc'];
     $docNumero = $_POST['numDoc'];
-
+    
+    
     $cli = new CrudCliente($fantasia, $responsavel, $docTipo, $docNumero);
 
     $cli->inserir();
+     
+     */
+     
+     
 }
 
 function editar() {
-    echo "iiiiiiiii:" + $_POST['id_cli'];
     $id = $_POST['id_cli'];
     $fantasia = $_POST['nome'];
     $responsavel = $_POST['responsavel'];
@@ -59,7 +77,6 @@ function excluir() {
 
 
     $id = $_POST['id_cli'];
-    echo "hhhhhhhh:" . $id;
     $cli = CrudCliente::newSoId($id);
     $cli->setId($id);
 
