@@ -9,10 +9,10 @@ class CrudCidade extends Cidade {
         parent::__construct();
     }
 
-    public function getByNomeEIdEstado($cidNome, $estId) {
+    public  static function getByNomeEIdEstado($cidNome, $estId) {
 
-        echo $cidNome . ': ' . $estId;    
-        
+        echo $cidNome . ': ' . $estId;
+
         $sql = "SELECT * FROM Cidades WHERE cid_nome = :nomeCid AND est_id = :estId";
 
         $stmt = DB::prepare($sql);
@@ -21,11 +21,11 @@ class CrudCidade extends Cidade {
         $stmt->bindValue(':estId', $estId, PDO::PARAM_STR);
 
         $cid = new CrudCidade();
-        $stmt->setFetchMode( PDO::FETCH_INTO, $cid);
+        $stmt->setFetchMode(PDO::FETCH_INTO, $cid);
         $stmt->execute();
-        $cidFinded = $stmt->fetch( PDO::FETCH_INTO );
+        $cidFinded = $stmt->fetch(PDO::FETCH_INTO);
         $stmt->closeCursor();
-        var_dump($cidFinded);
+       
         $cid->cidId = $cidFinded->cid_id;
         $cid->cidNome = $cidFinded->cid_nome;
         $cid->cidTimestamp = $cidFinded->cid_timestamp;
@@ -35,16 +35,22 @@ class CrudCidade extends Cidade {
     }
 
     public function inserir() {
-        $sql = "INSERT INTO Cidades (cid_nome, cid_timestamp, est_id) "
-                . "VALUES(:nome, :timestamp, :est_id)";
-        $stmt = DB::prepare($sql);
+        try {
 
-        $stmt->bindValue(':nome', $this->cidNome, PDO::PARAM_STR);
-        $stmt->bindValue(':timestamp', date("Y-m-d H:i:s"), PDO::PARAM_STR);
-        $stmt->bindValue(':est_id', $this->estId, PDO::PARAM_STR);
-        $retorno = $stmt->execute();
-        
-        $this->cidId = DB::lastId($this->tabela, cid_id);
+
+            $sql = "INSERT INTO Cidades (cid_nome, cid_timestamp, est_id) "
+                    . "VALUES(:nome, :timestamp, :est_id)";
+            $stmt = DB::prepare($sql);
+
+            $stmt->bindValue(':nome', $this->cidNome, PDO::PARAM_STR);
+            $stmt->bindValue(':timestamp', date("Y-m-d H:i:s"), PDO::PARAM_STR);
+            $stmt->bindValue(':est_id', $this->estId, PDO::PARAM_STR);
+            $retorno = $stmt->execute();
+            var_dump($retorno);
+            $this->cidId = DB::lastId($this->tabela, cid_id);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
     }
 
 }

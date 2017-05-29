@@ -1,7 +1,6 @@
 function carregarDados() {
 
     var xmlhttp = new XMLHttpRequest();
-
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var result = document.getElementById('result');
@@ -20,13 +19,13 @@ function verificarCEP() {
             "&cep=" + document.getElementById("cep").value;
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            
+
             var ret = xmlhttp.responseText;
             alert(ret);
             ret = ret.split(":");
             if (ret[0] == "1") {
                 document.getElementById('logradouro').placeholder = "Informe o logradouro";
-                document.getElementById('logradouro').removeAttribute("disabled");
+                document.getElementById('logradouro').removeAttribute("readonly");
                 document.getElementById('cidade').placeholder = "Informe a cidade";
                 document.getElementById('cidade').removeAttribute("disabled");
                 document.getElementById('tipoLogradouro').removeAttribute("disabled");
@@ -55,24 +54,21 @@ function editarCliente(idCli) {
                 + "&responsavel=" + prompt("Responsável", "Digite o nome do responsável")
                 + "&tipoDoc=" + prompt("Tipo do documento", "CPF, RG ou CNH")
                 + "&numDoc=" + prompt("Numero do documento", "Digite o número do documento");
-
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                //    alert(xmlhttp.responseText);
+                var ret = xmlhttp.responseText;
+                alert(ret);
             }
         };
-
-        xmlhttp.open("POST", "./cadastros/ManipularCliente.php", true);
+        xmlhttp.open('POST', './cadastros/ManipularCliente.php', true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send(dados);
         carregarDados();
-
     } catch (err) {
         alert(err);
         return;
     }
     row.parentNode.removeChild(row);
-
 }
 
 
@@ -85,25 +81,20 @@ function apagarCliente(idCli) {
         var xmlhttp = new XMLHttpRequest();
         var dados = "acao=excluir"
                 + "&id_cli=" + idCli;
-
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 alert(xmlhttp.responseText);
             }
         };
-
         xmlhttp.open("POST", "./cadastros/ManipularCliente.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send(dados);
-
         //carregarDados();
     } catch (err) {
         alert(err);
         return;
     }
     row.parentNode.removeChild(row);
-
-
 }
 /**
  * Função para o envio de dados
@@ -125,18 +116,18 @@ function cadastrarCliente() {
                 + "&end_complemento=" + document.forms[0]["complemento"].value
                 + "&cid_nome=" + document.forms[0]["cidade"].value
                 + "&est_estado=" + document.forms[0]["uf"].value;
-
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                alert(xmlhttp.responseText);
+                var result = document.getElementById('result');
+                result.innerHTML = xmlhttp.responseText;
             }
         };
-
-        xmlhttp.open("POST", "./cadastros/ManipularCliente.php", true);
-        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.open('POST', './cadastros/ManipularCliente.php', true);
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xmlhttp.send(dados);
         //carregarDados();
     } catch (err) {
         alert(err);
+        return;
     }
 }

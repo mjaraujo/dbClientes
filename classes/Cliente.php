@@ -1,20 +1,16 @@
 <?php
 
 class Cliente {
-
-    protected $id;
+    protected $tabela = 'Clientes';
+    protected $id = 0;
     protected $fantasia;
     protected $responsavel;
     protected $docTipo;
     protected $docNumero;
     protected $timestamp;
 
-    function __construct($fantasia, $responsavel, $docTipo, $docNumero) {
+    function __construct() {
 
-        $this->fantasia = $fantasia;
-        $this->responsavel = $responsavel;
-        $this->docTipo = $docTipo;
-        $this->docNumero = $docNumero;
     }
 
     

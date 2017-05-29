@@ -9,7 +9,7 @@ class CrudEstado extends Estado{
     }
 
     
-    public function getByNome($nomeUF) {
+    public static function getByNome($nomeUF) {
         
         
         $sql = "SELECT * FROM Estados WHERE est_nome = :nomeUF";

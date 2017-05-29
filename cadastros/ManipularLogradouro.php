@@ -28,6 +28,6 @@ function buscarPeloCEP() {
     $cep = $_POST['cep'];
     $logradouro = CrudLogradouro::buscarPeloCEP($cep);
     
-    echo $logradouro->getLog_nome();
+    echo $logradouro->getLogNome();
     
 }

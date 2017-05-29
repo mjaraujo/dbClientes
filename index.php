@@ -47,13 +47,13 @@
                 <label for="CEP">CEP</label>
                 <input type="text" name="cep" id="cep" onblur="verificarCEP()">
                 <label for="logradouro">Logradouro:</label>
-                <select name="tipoLogradouro" id="tipoLogradouro" disabled="true">
+                <select name="tipoLogradouro" id="tipoLogradouro">
                     <option value="rua">Rua</option>
                     <option value="avenida">Avenida</option>
                     <option value="alameda">Alameda</option>
                     <option value="praca">Praça</option>
                 </select>
-                <input type="text" name="logradouro" id="logradouro" disabled="true">
+                <input type="text" name="logradouro" id="logradouro" readonly>
                 <label for="uf">UF:</label>
                 <select name="uf" id="uf" disabled="true">
                     <option value="PR">PR</option>
@@ -62,13 +62,13 @@
                     <option value="SC">SC</option>
                 </select>                    
                 <label for="numero">Nº</label>
-                <input type="text" name="numero" id="numero" disabled="true">
+                <input type="text" name="numero" id="numero">
                 <label for="complemento">Complemento</label>
-                <input type="text" name="complemento" id="complemento" disabled="true">
+                <input type="text" name="complemento" id="complemento">
                 <label for="bairro">Bairro</label>
-                <input type="text" name="bairro" id="bairro" disabled="true">
+                <input type="text" name="bairro" id="bairro">
                 <label for="cidade">Cidade</label>
-                <input type="text" name="cidade" id="cidade" disabled="true">
+                <input type="text" name="cidade" id="cidade">
                 
                 <input type="hidden" value="cadCli" name="cadCli">
                 <button type="submit" >Salvar</button>
@@ -105,7 +105,12 @@
             </table>
         </div>
 
+        <p class="inseriu"></p>
+        
+            
+        </div>
 
+            
 
     </body>
 </html>

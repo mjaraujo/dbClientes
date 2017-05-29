@@ -1,61 +1,65 @@
 <?php
 
+
 class Endereco {
 
+    protected $tabela = 'Enderecos';
     protected $id;
-    protected $end_complemento;
-    protected $end_numero;
-    protected $cli_id;
-    protected $loc_id;
-    
-    function __construct($id, $end_complemento, $end_numero, $cli_id, $loc_id) {
-        $this->id = $id;
-        $this->end_complemento = $end_complemento;
-        $this->end_numero = $end_numero;
-        $this->cli_id = $cli_id;
-        $this->loc_id = $loc_id;
+    protected $endComplemento;
+    protected $endNumero;
+    protected $cliId;
+    protected $logId;
+
+    function __construct() {
+        
     }
-    
+
+    function getTabela() {
+        return $this->tabela;
+    }
+
     function getId() {
         return $this->id;
     }
 
-    function getEnd_complemento() {
-        return $this->end_complemento;
+    function getEndComplemento() {
+        return $this->endComplemento;
     }
 
-    function getEnd_numero() {
-        return $this->end_numero;
+    function getEnNumero() {
+        return $this->endNumero;
     }
 
-    function getCli_id() {
-        return $this->cli_id;
+    function getCliId() {
+        return $this->cliId;
     }
 
-    function getLoc_id() {
-        return $this->loc_id;
+    function getLocId() {
+        return $this->logId;
+    }
+
+    function setTabela($tabela) {
+        $this->tabela = $tabela;
     }
 
     function setId($id) {
         $this->id = $id;
     }
 
-    function setEnd_complemento($end_complemento) {
-        $this->end_complemento = $end_complemento;
+    function setEndComplemento($endComplemento) {
+        $this->endComplemento = $endComplemento;
     }
 
-    function setEnd_numero($end_numero) {
-        $this->end_numero = $end_numero;
+    function setEnNumero($enNumero) {
+        $this->endNumero = $enNumero;
     }
 
-    function setCli_id($cli_id) {
-        $this->cli_id = $cli_id;
+    function setCliId($cliId) {
+        $this->cliId = $cliId;
     }
 
-    function setLoc_id($loc_id) {
-        $this->loc_id = $loc_id;
+    function setLocId($locId) {
+        $this->logId = $locId;
     }
-
-
 
 }

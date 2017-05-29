@@ -11,72 +11,86 @@
  *
  * @author marcio
  */
+
+include_once ('Logradouro.php');
 class Logradouro {
 
-    private $log_cep;
-    private $log_nome;
-    private $log_tipo;
-    private $log_bairro;
-    private $log_timestamp;
-    private $cid_id;
+    protected $tabela = 'Logradouros';
+    protected $logId = 0;
+    protected $logCep;
+    protected $logNome;
+    protected $logTipo;
+    protected $logBairro;
+    protected $logTimestamp;
+    protected $cidId;
     
-    function __construct($log_cep, $log_nome, $log_tipo, $log_bairro, $log_timestamp, $cid_id) {
-        $this->log_cep = $log_cep;
-        $this->log_nome = $log_nome;
-        $this->log_tipo = $log_tipo;
-        $this->log_bairro = $log_bairro;
-        $this->log_timestamp = $log_timestamp;
-        $this->cid_id = $cid_id;
+    function __construct() {
+        
     }
     
-    function getLog_cep() {
-        return $this->log_cep;
+    function getTabela() {
+        return $this->tabela;
     }
 
-    function getLog_nome() {
-        return $this->log_nome;
+    function getLog_Id() {
+        return $this->logId;
     }
 
-    function getLog_tipo() {
-        return $this->log_tipo;
+    function getLogCep() {
+        return $this->logCep;
     }
 
-    function getLog_bairro() {
-        return $this->log_bairro;
+    function getLogNome() {
+        return $this->logNome;
     }
 
-    function getLog_timestamp() {
-        return $this->log_timestamp;
+    function getLogTipo() {
+        return $this->logTipo;
     }
 
-    function getCid_id() {
-        return $this->cid_id;
+    function getLogBairro() {
+        return $this->logBairro;
     }
 
-    function setLog_cep($log_cep) {
-        $this->log_cep = $log_cep;
+    function getLogTimestamp() {
+        return $this->logTimestamp;
     }
 
-    function setLog_nome($log_nome) {
-        $this->log_nome = $log_nome;
+    function getCidId() {
+        return $this->cidId;
     }
 
-    function setLog_tipo($log_tipo) {
-        $this->log_tipo = $log_tipo;
+    function setTabela($tabela) {
+        $this->tabela = $tabela;
     }
 
-    function setLog_bairro($log_bairro) {
-        $this->log_bairro = $log_bairro;
+    function setLog_Id($logId) {
+        $this->log_Id = $logId;
     }
 
-    function setLog_timestamp($log_timestamp) {
-        $this->log_timestamp = $log_timestamp;
+    function setLogCep($logCep) {
+        $this->logCep = $logCep;
     }
 
-    function setCid_id($cid_id) {
-        $this->cid_id = $cid_id;
+    function setLogNome($logNome) {
+        $this->logNome = $logNome;
     }
 
+    function setLogTipo($logTipo) {
+        $this->logTipo = $logTipo;
+    }
+
+    function setLogBairro($logBairro) {
+        $this->logBairro = $logBairro;
+    }
+
+    function setLogTimestamp($logTimestamp) {
+        $this->logTimestamp = $logTimestamp;
+    }
+
+    function setCidId($cidId) {
+        $this->cidId = $cidId;
+    }
 
 
 

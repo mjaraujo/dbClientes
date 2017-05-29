@@ -15,7 +15,7 @@
 include_once ('Cidade.php');
 class Cidade {
     protected $tabela = 'Cidades';
-    protected $cidId;
+    protected $cidId = 0;
     protected $cidNome;
     protected $cidTimestamp;
     protected $estId;
